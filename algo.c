@@ -11,14 +11,24 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	int	i;
 
 	i = 1;
-	while(i <= ft_lstsize(*stack_a))
+	while (i <= ft_lstsize(*stack_a))
 	{
-		if(get_element(*stack_a, i) >= med && get_element(*stack_a, i) < max)
+		if (get_element(*stack_a, i) >= med && get_element(*stack_a, i) < max)
 		{
 			get_at_top(stack_a, get_element(*stack_a, i));
 			push(stack_b, stack_a);
 			write(1, "pa\n", 3);
 			i = 0;
+		}
+		i++;
+	}
+	i = 1;
+	while (i <= ft_lstsize(*stack_a))
+	{
+		if(get_element(*stack_a, i ) != max)
+		{
+			push(stack_b, stack_a);
+			i = 1;
 		}
 		i++;
 	}
