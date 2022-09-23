@@ -6,7 +6,7 @@
 #    By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/03 16:45:59 by kyacini           #+#    #+#              #
-#    Updated: 2022/05/11 18:28:11 by kyacini          ###   ########.fr        #
+#    Updated: 2022/09/23 16:56:19 by kyacini          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all	:	${NAME}
 	gcc -o $@ -c $< 
 
 push_swap	:	${OBJS}
-	gcc -o ${NAME} ${OBJS} libft.a
+	gcc ${OBJS} -o ${NAME} libft.a
 
 clean	:
 	rm -rf *.o

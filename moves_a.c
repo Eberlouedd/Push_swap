@@ -33,11 +33,13 @@ void    rotate(t_list **stack)
 void    reverse_rotate(t_list **stack)
 {
     int tmp;
+    t_list *tmp2;
 
     tmp = ft_lstlast(*stack)->content;
     ft_lstadd_front(stack, ft_lstnew(tmp));
-    free(ft_lstlast(*stack));
+    tmp2 = ft_lstlast(*stack);
     get_before_last(*stack)->next = NULL;
+    free(tmp2);
 }
 
 void    rr(t_list **stack_a, t_list **stack_b)

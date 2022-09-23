@@ -23,6 +23,5 @@ int	main(int argc, char **argv)
 	}
 	stack_a = create_stack_a(final_parsing(argc, argv));
 	the_grading_machine(&stack_a, &stack_b, med, max);
-	afflist(stack_b);
 	return (0);
 }
