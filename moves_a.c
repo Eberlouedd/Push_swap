@@ -13,12 +13,10 @@ void    swap(t_list **stack)
 
 void    push(t_list **stack_dest, t_list **stack_src)
 {
-    t_list  *buff;
     if(stack_src == NULL)
         return ;
-    buff = (*stack_src)->next;
-    ft_lstadd_front(stack_dest, *stack_src);
-    *stack_src = buff;
+    ft_lstadd_front(stack_dest, ft_lstnew((*stack_src)->content));
+    clear_first_element(stack_src);
 }
 
 void    rotate(t_list **stack)
