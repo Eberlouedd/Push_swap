@@ -30,5 +30,7 @@ void    the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max
 void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max);
 void	afflist(t_list *list);
 int     get_element(t_list *stack, int i);
+void    move_max_btoa(t_list **stack_a, t_list **stack_b);
+int	    schr_max(t_list *stack);
 
 #endif
