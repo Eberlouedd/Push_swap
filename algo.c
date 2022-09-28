@@ -3,8 +3,21 @@
 
 void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
 {
+	int index_a;
+	int index_b;
+	int	i;
+	int	size;
+
+	i = 1;
 	set_stack_b(stack_a, stack_b, med, max);
-	move_max_btoa(stack_a, stack_b);
+	grind_new_a(stack_a);
+	size = ft_lstsize(*stack_b);
+	while (i < size)
+	{
+		get_best_move(*stack_a, *stack_b, &index_a, &index_b);
+		from_b_to_a(stack_a, stack_b, index_a, index_b);
+		i++;
+	}
 }
 
 void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
@@ -16,61 +29,63 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	{
 		if (get_element(*stack_a, i) >= med && get_element(*stack_a, i) < max)
 		{
-			get_at_top(stack_a, get_element(*stack_a, i));
-			push(stack_b, stack_a);
-			write(1, "pa\n", 3);
+			get_to_top_a(stack_a, get_element(*stack_a, i));
+			push(stack_b, stack_a, 0);
 			i = 0;
 		}
 		i++;
 	}
 	i = 1;
-	while (i <= ft_lstsize(*stack_a))
+	while (i <= ft_lstsize(*stack_a) - 2)
 	{
 		if(get_element(*stack_a, i) != max)
 		{
-			get_at_top(stack_a, get_element(*stack_a, i));
-			push(stack_b, stack_a);
-			write(1, "pa\n", 3);
+			get_to_top_a(stack_a, get_element(*stack_a, i));
+			push(stack_b, stack_a, 0);
 			i = 0;
 		}
 		i++;
 	}
 }
 
-int	schr_max(t_list *stack)
+int	find_place(t_list *stack, int element)
 {
-	int	 max;
-	int	index;
-	int i;
+	int	before;
+	int	i;
 
 	i = 1;
-	index = 1;
-	max = stack->content;
-	while (stack)
+	if (element > stack->content)
+		return (i);
+	while(stack)
 	{
-		if(stack->content > max)
-		{
-			index = i;
-			max = stack->content;
-		}	
+		if(element < stack->content && element > before)
+			return(i);
+		before = stack->content;
 		stack = stack->next;
 		i++;
 	}
-	return (index);
+	return (0);
 }
 
-void move_max_btoa(t_list **stack_a, t_list **stack_b)
+int count_moves(int len_a, int len_b, int index_a, int index_b)
 {
-	int	i;
-	int	size;
+	int moves;
+	
+	moves = 1;
+	if (len_b - index_b >= len_b / 2 && index_b != 1)
+		moves += index_b - 1;
+	else if (index_b != 1)
+		moves += len_b - index_b + 1;
+	if (len_a - index_a >= len_a / 2 && index_a != 1)
+		moves += index_a - 1;
+	else if (index_a != 1)
+		moves += len_a - index_a + 1;
+	return (moves);
+}
 
-	size = ft_lstsize(*stack_b);
-	i = 1;
-	while(i <= size)
-	{
-		get_at_top(stack_b, get_element(*stack_b, schr_max(*stack_b)));
-		push(stack_a, stack_b);
-		write(1, "pb\n", 3);
-		i++;
-	}
+void	from_b_to_a(t_list **stack_a, t_list **stack_b, int index_a, int index_b)
+{
+	get_to_top_a(stack_a, get_element(*stack_a, index_a));
+	get_to_top_b(stack_b, get_element(*stack_b, index_b));
+	push(stack_a, stack_b, 1);
 }
