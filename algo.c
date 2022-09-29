@@ -12,7 +12,7 @@ void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
 	set_stack_b(stack_a, stack_b, med, max);
 	grind_new_a(stack_a);
 	size = ft_lstsize(*stack_b);
-	while (i < size)
+	while (i <= size)
 	{
 		get_best_move(*stack_a, *stack_b, &index_a, &index_b);
 		from_b_to_a(stack_a, stack_b, index_a, index_b);
@@ -27,7 +27,7 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	i = 1;
 	while (i <= ft_lstsize(*stack_a))
 	{
-		if (get_element(*stack_a, i) >= med && get_element(*stack_a, i) < max)
+		if (get_element(*stack_a, i) <= med && get_element(*stack_a, i) < max)
 		{
 			get_to_top_a(stack_a, get_element(*stack_a, i));
 			push(stack_b, stack_a, 0);
@@ -36,7 +36,7 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 		i++;
 	}
 	i = 1;
-	while (i <= ft_lstsize(*stack_a) - 2)
+	while (i <= ft_lstsize(*stack_a) - 3)
 	{
 		if(get_element(*stack_a, i) != max)
 		{
@@ -50,21 +50,24 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 
 int	find_place(t_list *stack, int element)
 {
-	int	before;
+	int	min_of_max;
 	int	i;
+	int	final;
 
 	i = 1;
-	if (element > stack->content)
-		return (i);
+	final = 1;
+	min_of_max = get_first_min(stack, element);
 	while(stack)
 	{
-		if(element < stack->content && element > before)
-			return(i);
-		before = stack->content;
+		if(element < stack->content && min_of_max >= stack->content)
+		{
+			min_of_max = stack->content;
+			final = i;
+		}
 		stack = stack->next;
 		i++;
 	}
-	return (0);
+	return (final);
 }
 
 int count_moves(int len_a, int len_b, int index_a, int index_b)

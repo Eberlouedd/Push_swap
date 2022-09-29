@@ -57,3 +57,18 @@ int	get_element(t_list *stack, int i)
 	}
 	return (stack->content);
 }
+
+int	get_first_min(t_list *stack, int element)
+{
+	int max;
+	while (stack)
+	{
+		if(element < stack->content)
+		{
+			max = stack->content;
+			break ;
+		}
+		stack = stack->next;
+	}
+	return (max);
+}
