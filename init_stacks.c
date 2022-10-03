@@ -44,9 +44,7 @@ void    get_best_move(t_list *stack_a, t_list *stack_b, int *a, int *b)
     while (i <= ft_lstsize(stack_b))
     {
         *a = find_place(stack_a, get_element(stack_b, i));
-        printf("b : %d, a : %d", i, *a);
         moves = count_moves(ft_lstsize(stack_a), ft_lstsize(stack_b), *a, i);
-        printf("%d\n", moves);
         if(moves < before)
         {
             final = i;
@@ -55,7 +53,6 @@ void    get_best_move(t_list *stack_a, t_list *stack_b, int *a, int *b)
         i++;
     }
     *b = final;
-    printf("\n%d\n", *b);
     *a = find_place(stack_a, get_element(stack_b, *b));
 }
 

@@ -18,6 +18,8 @@ void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
 		from_b_to_a(stack_a, stack_b, index_a, index_b);
 		i++;
 	}
+	get_to_top_a(stack_a, max);
+	rotate(stack_a, 1);
 }
 
 void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
