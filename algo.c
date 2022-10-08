@@ -19,7 +19,6 @@ void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
 		i++;
 	}
 	get_to_top_a(stack_a, max);
-	rotate(stack_a, 1);
 }
 
 void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
@@ -27,7 +26,7 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	int	i;
 
 	i = 1;
-	while (i <= ft_lstsize(*stack_a))
+	while (i <= ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
 	{
 		if (get_element(*stack_a, i) <= med && get_element(*stack_a, i) < max)
 		{

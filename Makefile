@@ -16,7 +16,8 @@ SRC = main.c \
 		moves_b.c \
 		init_stacks.c \
 		utils.c \
-		algo.c
+		algo.c \
+		case_man.c
 
 NAME = push_swap
 

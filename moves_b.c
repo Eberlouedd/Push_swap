@@ -2,6 +2,8 @@
 
 void	get_to_top_a(t_list **stack, int num)
 {
+	if(is_grinded(*stack))
+		return ;
 	if (top_or_bot(*stack, num))
 	{
 		while ((*stack)->content != num)
