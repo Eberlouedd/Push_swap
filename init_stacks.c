@@ -41,11 +41,13 @@ void    get_best_move(t_list *stack_a, t_list *stack_b, int *a, int *b)
     int before;
 
     i = 1;
+    *a = find_place(stack_a, get_element(stack_b, 1));
+    before = count_moves(ft_lstsize(stack_a), ft_lstsize(stack_b), *a, 1);
     while (i <= ft_lstsize(stack_b))
     {
         *a = find_place(stack_a, get_element(stack_b, i));
         moves = count_moves(ft_lstsize(stack_a), ft_lstsize(stack_b), *a, i);
-        if(moves < before)
+        if(moves <= before)
         {
             final = i;
             before = moves;
