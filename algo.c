@@ -1,4 +1,3 @@
-
 #include "push_swap.h"
 
 void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
@@ -31,7 +30,8 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 		if (get_element(*stack_a, i) <= med && get_element(*stack_a, i) < max)
 		{
 			get_to_top_a(stack_a, get_element(*stack_a, i));
-			push(stack_b, stack_a, 0);
+			push(stack_b, stack_a);
+			write(1, "pb\n", 3);
 			i = 0;
 		}
 		i++;
@@ -42,7 +42,8 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 		if(get_element(*stack_a, i) != max)
 		{
 			get_to_top_a(stack_a, get_element(*stack_a, i));
-			push(stack_b, stack_a, 0);
+			push(stack_b, stack_a);
+			write(1, "pb\n", 3);
 			i = 0;
 		}
 		i++;
@@ -91,5 +92,6 @@ void	from_b_to_a(t_list **stack_a, t_list **stack_b, int index_a, int index_b)
 {
 	get_to_top_a(stack_a, get_element(*stack_a, index_a));
 	get_to_top_b(stack_b, get_element(*stack_b, index_b));
-	push(stack_a, stack_b, 1);
+	push(stack_a, stack_b);
+	write(1, "pa\n", 3);
 }

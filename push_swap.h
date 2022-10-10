@@ -11,7 +11,7 @@ int	    strchr_num(char *str);
 char	**final_parsing(int n, char **arg);
 t_list *create_stack_a(char **str);
 void    swap(t_list **stack, int n);
-void    push(t_list **stack_dest, t_list **stack_src, int n);
+void    push(t_list **stack_dest, t_list **stack_src);
 void    rotate(t_list **stack, int n);
 void    reverse_rotate(t_list **stack, int n);
 void    clear_first_element(t_list **stack);

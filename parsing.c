@@ -50,7 +50,7 @@ int	check_doublon(char **str)
 		c = i + 1;
 		while (str[c])
 		{
-			if (!ft_strcmp(str[i], str[c]))
+			if (ft_atoi(str[i]) == ft_atoi(str[c]))
 				return (0);
 			c++;
 		}

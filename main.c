@@ -1,5 +1,14 @@
 #include "push_swap.h"
 
+void	afflist(t_list *stack)
+{
+	while(stack)
+	{
+		printf("%d", stack->content);
+		stack = stack->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_list *stack_a;

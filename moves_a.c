@@ -15,16 +15,12 @@ void    swap(t_list **stack, int n)
         write(1, "sa\n", 3);
 }
 
-void    push(t_list **stack_dest, t_list **stack_src, int n)
+void    push(t_list **stack_dest, t_list **stack_src)
 {
     if(stack_src == NULL)
         return ;
     ft_lstadd_front(stack_dest, ft_lstnew((*stack_src)->content));
     clear_first_element(stack_src);
-    if (!n)
-        write(1, "pb\n", 3);
-    else
-        write(1, "pa\n", 3);
 }
 
 void    rotate(t_list **stack, int n)
