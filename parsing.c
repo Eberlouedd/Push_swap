@@ -47,6 +47,8 @@ int	check_doublon(char **str)
 	i = 0;
 	while (str[i])
 	{
+		if (!test_limit(str[i]))
+			return (0);
 		c = i + 1;
 		while (str[c])
 		{

@@ -16,10 +16,12 @@ int	is_grinded(t_list *stack)
     return (1);
 }
 
-void    clear_stacks(t_list **stack_a, t_list **stack_b)
+int test_limit(char *str)
 {
-    while(stack_a)
-        clear_first_element(stack_a);
-    while(stack_b)
-        clear_first_element(stack_b);
+    int num;
+
+    num = ft_atoi(str);
+    if (ft_strcmp(ft_itoa(num), str))
+        return (0);
+    return (1);
 }
