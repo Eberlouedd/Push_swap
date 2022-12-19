@@ -35,6 +35,6 @@ void    get_best_move(t_list *stack_a, t_list *stack_b, int *a, int *b);
 void    grind_new_a(t_list **stack_a);
 int	    get_first_min(t_list *stack, int element);
 int	    is_grinded(t_list *stack);
-void    clear_stacks(t_list **stack_a, t_list **stack_b);
+int     test_limit(char *str);
 
 #endif

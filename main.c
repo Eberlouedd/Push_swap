@@ -4,7 +4,7 @@ void	afflist(t_list *stack)
 {
 	while(stack)
 	{
-		printf("%d", stack->content);
+		printf("%d\n", stack->content);
 		stack = stack->next;
 	}
 }
@@ -27,5 +27,6 @@ int	main(int argc, char **argv)
 		exit(0);
 	else
 		the_grading_machine(&stack_a, &stack_b, med, max);
+	afflist(stack_a);
 	return (0);
 }
