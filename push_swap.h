@@ -36,5 +36,6 @@ void    grind_new_a(t_list **stack_a);
 int	    get_first_min(t_list *stack, int element);
 int	    is_grinded(t_list *stack);
 int     test_limit(char *str);
+int     find_min(t_list *stack);
 
 #endif

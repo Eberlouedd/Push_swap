@@ -65,6 +65,7 @@ void    grind_new_a(t_list **stack_a)
     int before;
 
     i = 1;
+    final = 1;
     before = get_element(*stack_a, 1);
     while (i <= ft_lstsize(*stack_a))
     {

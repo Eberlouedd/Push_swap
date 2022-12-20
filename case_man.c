@@ -25,3 +25,17 @@ int test_limit(char *str)
         return (0);
     return (1);
 }
+
+int find_min(t_list *stack)
+{
+    int min;
+
+    min = stack->content;
+    while(stack)
+    {
+        if(stack->content < min)
+            min = stack->content;
+        stack = stack->next;
+    }
+    return (min);
+}

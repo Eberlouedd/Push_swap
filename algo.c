@@ -18,10 +18,7 @@ void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
 		i++;
 	}
 	if(!is_grinded(*stack_a))
-	{
-		get_to_top_a(stack_a, max);
-		rotate(stack_a, 1);
-	}
+		get_to_top_a(stack_a, find_min(*stack_a));
 }
 
 void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
