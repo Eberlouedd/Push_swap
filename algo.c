@@ -28,7 +28,7 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	i = 1;
 	while (i <= ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
 	{
-		if (get_element(*stack_a, i) <= med && get_element(*stack_a, i) < max)
+		if (get_element(*stack_a, i) <= med)
 		{
 			get_to_top_a(stack_a, get_element(*stack_a, i));
 			push(stack_b, stack_a);
@@ -38,7 +38,7 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 		i++;
 	}
 	i = 1;
-	while (i <= ft_lstsize(*stack_a) - 3)
+	while (ft_lstsize(*stack_a) > 3)
 	{
 		if(get_element(*stack_a, i) != max)
 		{
