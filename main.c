@@ -27,5 +27,6 @@ int	main(int argc, char **argv)
 		exit(0);
 	else
 		the_grading_machine(&stack_a, &stack_b, med, max);
+	ft_lstclear(&stack_a);
 	return (0);
 }

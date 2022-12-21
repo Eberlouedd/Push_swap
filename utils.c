@@ -75,9 +75,9 @@ int find_max(char **splited)
 	int	size;
 
     i = 0;
+	tab = tab_char_to_int(splited, size);
     max = tab[0];
 	size = strlen_double(splited);
-	tab = tab_char_to_int(splited, size);
     while (i < size)
     {
         if (max < tab[i])

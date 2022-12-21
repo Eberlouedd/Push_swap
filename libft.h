@@ -65,9 +65,7 @@ void			ft_lstadd_front(t_list **lst, t_list *new);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(int));
 void			ft_lstiter(t_list *lst, void (*f)(int));
-void			ft_lstclear(t_list **lst, void (*del)(int));
-t_list			*ft_lstmap(t_list *lst, int(*f)(int),
-					void (*del)(int));
+void			ft_lstclear(t_list **lst);
 int				ft_strcmp(char *s1, char *s2);
 char			*ft_strrejoin(int size, char **strs, char *sep, int start);
 char			*ft_strcat(char *dest, char *src);
