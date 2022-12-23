@@ -30,7 +30,7 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	{
 		while (i <= ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
 		{
-			if (get_element(*stack_a, i) <= med)
+			if (get_element(*stack_a, i) <= med && get_element(*stack_a, i) < max)
 			{
 				get_to_top_a(stack_a, get_element(*stack_a, i));
 				push(stack_b, stack_a);
@@ -79,7 +79,7 @@ int	find_place(t_list *stack, int element)
 int count_moves(int len_a, int len_b, int index_a, int index_b)
 {
 	int moves;
-
+	
 	moves = 1;
 	if (len_b - index_b >= len_b / 2 && index_b != 1)
 		moves += index_b - 1;

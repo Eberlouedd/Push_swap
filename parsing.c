@@ -76,13 +76,13 @@ int	test_format(int n, char **arg, int *med, int *max)
 	if(!check_doublon(splited))
 	{
 		free(str);
-		free(splited);
+		free_double_char(splited);
 		return(0);
 	}
 	*med = find_med(splited);
 	*max = find_max(splited);
 	free(str);
-	free(splited);
+	free_double_char(splited);
 	return (1);
 }
 

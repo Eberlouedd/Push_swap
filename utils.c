@@ -48,11 +48,14 @@ int find_med(char **splited)
 {
 	int	*tab;
 	int	size;
+	int	result;
 
 	size = strlen_double(splited);
 	tab = tab_char_to_int(splited, size);
     sort_int_tab(tab, size);
-    return (tab[size / 2]);
+	result = tab[size / 2];
+	free(tab);
+    return (result);
 }
 
 int	strlen_double(char **str)
@@ -75,14 +78,15 @@ int find_max(char **splited)
 	int	size;
 
     i = 0;
+	size = strlen_double(splited);
 	tab = tab_char_to_int(splited, size);
     max = tab[0];
-	size = strlen_double(splited);
     while (i < size)
     {
         if (max < tab[i])
             max = tab[i];
         i++;
     }
+	free(tab);
     return (max);
 }

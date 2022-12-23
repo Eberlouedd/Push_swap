@@ -12,6 +12,7 @@ t_list *create_stack_a(char **str)
         ft_lstadd_back(&stack, ft_lstnew(ft_atoi(str[i])));
         i++;
     }
+    //free_double_char(str);
     return (stack);
 }
 

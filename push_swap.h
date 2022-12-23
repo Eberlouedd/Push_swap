@@ -37,5 +37,6 @@ int	    get_first_min(t_list *stack, int element);
 int	    is_grinded(t_list *stack);
 int     test_limit(char *str);
 int     find_min(t_list *stack);
+void	free_double_char(char	**str);
 
 #endif
