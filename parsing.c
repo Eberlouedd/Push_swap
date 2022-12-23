@@ -88,5 +88,11 @@ int	test_format(int n, char **arg, int *med, int *max)
 
 char	**final_parsing(int n, char **arg)
 {
-	return (ft_split(ft_strrejoin(n, arg, " ", 1), ' '));
+	char *buff;
+	char **end;
+
+	buff = ft_strrejoin(n, arg, " ", 1);
+	end = ft_split(buff, ' ');
+	free(buff);
+	return (end);
 }
