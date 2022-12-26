@@ -1,3 +1,5 @@
+#include "checker.h"
+
 void    swap(t_list **stack)
 {
     int tmp;
@@ -36,4 +38,13 @@ void    reverse_rotate(t_list **stack)
     tmp2 = ft_lstlast(*stack);
     get_before_last(*stack)->next = NULL;
     free(tmp2);
+}
+
+void clear(t_list **stack)
+{
+    int i;
+
+    i = 0;
+    while (i < ft_lstsize(*stack))
+        clear_first_element(stack);
 }

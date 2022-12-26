@@ -1,3 +1,5 @@
+#include "checker.h"
+
 int	strchr_num(char *str)
 {
 	int	i;
