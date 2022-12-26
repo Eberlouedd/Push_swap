@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/26 17:28:54 by kyacini           #+#    #+#             */
+/*   Updated: 2022/12/26 17:29:37 by kyacini          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	strchr_num(char *str)
@@ -23,7 +35,8 @@ int	check_str(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (!((str[i] <= '9' && str[i] >= '0') || str[i] == ' ' || str[i] == '-' || str[i] == '+'))
+		if (!((str[i] <= '9' && str[i] >= '0') || str[i] == ' ' || str[i] == '-'
+				|| str[i] == '+'))
 			return (0);
 		if ((str[i] == '-' || str[i] == '+'))
 		{
@@ -67,17 +80,17 @@ int	test_format(int n, char **arg, int *med, int *max)
 	char	**splited;
 
 	str = ft_strrejoin(n, arg, " ", 1);
-	if(!check_str(str))
+	if (!check_str(str))
 	{
 		free(str);
 		return (0);
 	}
 	splited = ft_split(str, ' ');
-	if(!check_doublon(splited))
+	if (!check_doublon(splited))
 	{
 		free(str);
 		free_double_char(splited);
-		return(0);
+		return (0);
 	}
 	*med = find_med(splited);
 	*max = find_max(splited);
@@ -88,8 +101,8 @@ int	test_format(int n, char **arg, int *med, int *max)
 
 char	**final_parsing(int n, char **arg)
 {
-	char *buff;
-	char **end;
+	char	*buff;
+	char	**end;
 
 	buff = ft_strrejoin(n, arg, " ", 1);
 	end = ft_split(buff, ' ');

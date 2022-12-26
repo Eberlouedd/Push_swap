@@ -5,31 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 17:28:28 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/26 17:50:06 by kyacini          ###   ########.fr       */
+/*   Created: 2022/12/26 17:58:39 by kyacini           #+#    #+#             */
+/*   Updated: 2022/12/26 19:22:10 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	norm(t_list **stack_a, t_list **stack_b, int *i)
-{
-	get_to_top_a(stack_a, get_element(*stack_a, *i));
-	push(stack_b, stack_a);
-	write(1, "pb\n", 3);
-	*i = 0;
-}
+#include "checker.h"
 
 int	main(int argc, char **argv)
 {
+	char	**instructions;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		med;
-	int		max;
 	char	**last;
 
 	stack_b = NULL;
-	if (!test_format(argc, argv, &med, &max) || argc == 1)
+	if (argc == 1)
+		return (0);
+	if (!test_format(argc, argv))
 	{
 		write(2, "Error\n", 6);
 		exit (1);
@@ -37,8 +30,13 @@ int	main(int argc, char **argv)
 	last = final_parsing(argc, argv);
 	stack_a = create_stack_a(last);
 	free_double_char(last);
-	if (!is_grinded(stack_a))
-		the_grading_machine(&stack_a, &stack_b, med, max);
+	instructions = get_instruction();
+	exe_instruction(&stack_a, &stack_b, instructions);
+	if (is_grinded(stack_a) && is_empty(stack_b))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	clear(&stack_a);
-	return (0);
+	clear(&stack_b);
+	return (free_double_char(instructions), 0);
 }

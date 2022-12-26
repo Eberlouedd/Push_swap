@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/26 17:46:08 by kyacini           #+#    #+#             */
+/*   Updated: 2022/12/26 17:51:03 by kyacini          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
+void	the_grading_machine(t_list **stack_a, t_list **stack_b, int med,
+			int max)
 {
-	int index_a;
-	int index_b;
+	int	index_a;
+	int	index_b;
 	int	i;
 	int	size;
 
@@ -17,11 +30,11 @@ void the_grading_machine(t_list **stack_a, t_list **stack_b, int med, int max)
 		from_b_to_a(stack_a, stack_b, index_a, index_b);
 		i++;
 	}
-	if(!is_grinded(*stack_a))
+	if (!is_grinded(*stack_a))
 		get_to_top_a(stack_a, find_min(*stack_a));
 }
 
-void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
+void	set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 {
 	int	i;
 
@@ -30,26 +43,17 @@ void    set_stack_b(t_list **stack_a, t_list **stack_b, int med, int max)
 	{
 		while (i <= ft_lstsize(*stack_a) && ft_lstsize(*stack_a) > 3)
 		{
-			if (get_element(*stack_a, i) <= med && get_element(*stack_a, i) < max)
-			{
-				get_to_top_a(stack_a, get_element(*stack_a, i));
-				push(stack_b, stack_a);
-				write(1, "pb\n", 3);
-				i = 0;
-			}
+			if (get_element(*stack_a, i) <= med
+				&& get_element(*stack_a, i) < max)
+				norm(stack_a, stack_b, &i);
 			i++;
 		}
 	}
 	i = 1;
 	while (ft_lstsize(*stack_a) > 3)
 	{
-		if(get_element(*stack_a, i) != max)
-		{
-			get_to_top_a(stack_a, get_element(*stack_a, i));
-			push(stack_b, stack_a);
-			write(1, "pb\n", 3);
-			i = 0;
-		}
+		if (get_element(*stack_a, i) != max)
+			norm(stack_a, stack_b, &i);
 		i++;
 	}
 }
@@ -63,9 +67,9 @@ int	find_place(t_list *stack, int element)
 	i = 1;
 	final = 1;
 	min_of_max = get_first_min(stack, element);
-	while(stack)
+	while (stack)
 	{
-		if(element < stack->content && min_of_max >= stack->content)
+		if (element < stack->content && min_of_max >= stack->content)
 		{
 			min_of_max = stack->content;
 			final = i;
@@ -76,10 +80,10 @@ int	find_place(t_list *stack, int element)
 	return (final);
 }
 
-int count_moves(int len_a, int len_b, int index_a, int index_b)
+int	count_moves(int len_a, int len_b, int index_a, int index_b)
 {
-	int moves;
-	
+	int	moves;
+
 	moves = 1;
 	if (len_b - index_b >= len_b / 2 && index_b != 1)
 		moves += index_b - 1;
@@ -92,7 +96,8 @@ int count_moves(int len_a, int len_b, int index_a, int index_b)
 	return (moves);
 }
 
-void	from_b_to_a(t_list **stack_a, t_list **stack_b, int index_a, int index_b)
+void	from_b_to_a(t_list **stack_a, t_list **stack_b, int index_a,
+			int index_b)
 {
 	get_to_top_a(stack_a, get_element(*stack_a, index_a));
 	get_to_top_b(stack_b, get_element(*stack_b, index_b));

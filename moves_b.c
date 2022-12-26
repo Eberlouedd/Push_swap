@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves_b.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/26 17:28:38 by kyacini           #+#    #+#             */
+/*   Updated: 2022/12/26 17:28:45 by kyacini          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	get_to_top_a(t_list **stack, int num)
@@ -60,10 +72,11 @@ int	get_element(t_list *stack, int i)
 
 int	get_first_min(t_list *stack, int element)
 {
-	int max;
+	int	max;
+
 	while (stack)
 	{
-		if(element < stack->content)
+		if (element < stack->content)
 		{
 			max = stack->content;
 			break ;

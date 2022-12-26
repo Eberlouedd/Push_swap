@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skhali <skhali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:59:58 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/23 21:30:23 by skhali           ###   ########.fr       */
+/*   Updated: 2022/12/26 17:44:38 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(int));
 void			ft_lstiter(t_list *lst, void (*f)(int));
 void			ft_lstclear(t_list **lst, void (*del)(int));
-t_list			*ft_lstmap(t_list *lst, int(*f)(int),
+t_list			*ft_lstmap(t_list *lst, int (*f)(int),
 					void (*del)(int));
 int				ft_strcmp(char *s1, char *s2);
 char			*ft_strrejoin(int size, char **strs, char *sep, int start);
 char			*ft_strcat(char *dest, char *src);
-void 			clear(t_list **stack);
+void			clear(t_list **stack);
 
 #endif

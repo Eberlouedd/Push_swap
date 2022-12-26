@@ -1,58 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   case_man.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/26 17:44:51 by kyacini           #+#    #+#             */
+/*   Updated: 2022/12/26 17:46:02 by kyacini          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_grinded(t_list *stack)
 {
-    int before;
+	int	before;
 
-    before = stack->content;
-    stack = stack->next;
+	before = stack->content;
+	stack = stack->next;
 	while (stack)
-    {
-        if (stack->content < before)
-            return (0);
-        before = stack->content;
-        stack = stack->next;
-    }
-    return (1);
+	{
+		if (stack->content < before)
+			return (0);
+		before = stack->content;
+		stack = stack->next;
+	}
+	return (1);
 }
 
-int test_limit(char *str)
+int	test_limit(char *str)
 {
-    int num;
-    char *buff;
+	int		num;
+	char	*buff;
 
-    num = ft_atoi(str);
-    buff = ft_itoa(num);
-    if (ft_strcmp(buff, str))
-    {
-        free(buff);
-        return (0);
-    }
-    free(buff);
-    return (1);
+	num = ft_atoi(str);
+	buff = ft_itoa(num);
+	if (ft_strcmp(buff, str))
+	{
+		free(buff);
+		return (0);
+	}
+	free(buff);
+	return (1);
 }
 
-int find_min(t_list *stack)
+int	find_min(t_list *stack)
 {
-    int min;
+	int	min;
 
-    min = stack->content;
-    while(stack)
-    {
-        if(stack->content < min)
-            min = stack->content;
-        stack = stack->next;
-    }
-    return (min);
+	min = stack->content;
+	while (stack)
+	{
+		if (stack->content < min)
+			min = stack->content;
+		stack = stack->next;
+	}
+	return (min);
 }
 
-void clear(t_list **stack)
+void	clear(t_list **stack)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < ft_lstsize(*stack))
-        clear_first_element(stack);
+	i = 0;
+	while (i < ft_lstsize(*stack))
+		clear_first_element(stack);
 }
 
 void	free_double_char(char	**str)

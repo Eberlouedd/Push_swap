@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_a.c                                          :+:      :+:    :+:   */
+/*   moves_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 17:40:01 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/26 17:42:00 by kyacini          ###   ########.fr       */
+/*   Created: 2022/12/26 17:53:40 by kyacini           #+#    #+#             */
+/*   Updated: 2022/12/26 17:53:49 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	swap(t_list **stack, int n)
+void	swap(t_list **stack)
 {
 	int	tmp;
 
@@ -21,10 +21,6 @@ void	swap(t_list **stack, int n)
 	tmp = (*stack)->content;
 	(*stack)->content = (*stack)->next->content;
 	(*stack)->next->content = tmp;
-	if (!n)
-		write(1, "sb\n", 3);
-	else
-		write(1, "sa\n", 3);
 }
 
 void	push(t_list **stack_dest, t_list **stack_src)
@@ -35,20 +31,16 @@ void	push(t_list **stack_dest, t_list **stack_src)
 	clear_first_element(stack_src);
 }
 
-void	rotate(t_list **stack, int n)
+void	rotate(t_list **stack)
 {
 	int	tmp;
 
 	tmp = (*stack)->content;
 	clear_first_element(stack);
 	ft_lstadd_back(stack, ft_lstnew(tmp));
-	if (!n)
-		write(1, "rb\n", 3);
-	else
-		write(1, "ra\n", 3);
 }
 
-void	reverse_rotate(t_list **stack, int n)
+void	reverse_rotate(t_list **stack)
 {
 	int		tmp;
 	t_list	*tmp2;
@@ -58,8 +50,13 @@ void	reverse_rotate(t_list **stack, int n)
 	tmp2 = ft_lstlast(*stack);
 	get_before_last(*stack)->next = NULL;
 	free(tmp2);
-	if (!n)
-		write(1, "rrb\n", 4);
-	else
-		write(1, "rra\n", 4);
+}
+
+void	clear(t_list **stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < ft_lstsize(*stack))
+		clear_first_element(stack);
 }
